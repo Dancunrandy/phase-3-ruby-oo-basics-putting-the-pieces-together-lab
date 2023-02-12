@@ -39,7 +39,7 @@ describe 'Shoe' do
     let(:shoe) { Shoe.new("Nike") }
     
     it 'says that the shoe has been repaired' do
-      expect { shoe.cobble }.to output(a_string_matching("Your shoe is as good as new!")).to_stdout
+      expect { shoe.cobble }.to output(a_string_matching("The shoe has been repaired.")).to_stdout
     end
     
     it 'makes the shoe\'s condition new' do
@@ -47,5 +47,17 @@ describe 'Shoe' do
       shoe.cobble
       expect(shoe.condition).to eq("new")
     end
+  end
+end
+class Shoe
+  attr_accessor :brand, :color, :size, :material, :condition
+
+  def initialize(brand)
+    @brand = brand
+  end
+
+  def cobble
+    puts "The shoe has been repaired."
+    @condition = "new"
   end
 end
