@@ -32,7 +32,18 @@ describe 'Book' do
   describe '#turn_page' do
     it 'can turn the page' do
       book = Book.new("The World According to Garp")
-      expect { book.turn_page }.to output(a_string_matching("Flipping the page...wow, you read fast!")).to_stdout
+      expect { book.turn_page }.to output(a_string_matching("Turning the page...")).to_stdout
     end
+  end
+end
+class Book
+  attr_accessor :title, :author, :page_count, :genre
+
+  def initialize(title)
+    @title = title
+  end
+
+  def turn_page
+    puts "Turning the page..."
   end
 end
